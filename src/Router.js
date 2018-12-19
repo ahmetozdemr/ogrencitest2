@@ -7,8 +7,16 @@ const RouterComponent = () => {
   return (
     <Router>
       <Scene key="kimlik">
+
+      <Scene 
+        onRight={() => console.log('tıklandı')}
+        rightTitle="Yeni"
+        key="studentsList" 
+        component={StudentsList} 
+        title="Öğrenci Liste" />
         <Scene key="loginScreen" component={LoginForm} title="Giris Ekrani" />
-        <Scene key="studentsList" component={StudentsList} title="Öğrenci Liste" />
+        
+       
       </Scene>
     </Router>
   );
