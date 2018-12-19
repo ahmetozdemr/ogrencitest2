@@ -15,10 +15,8 @@ export default (state = INITIAL_STATE, action) => {
     case LOGIN_USER:
       return { ...state, loading: true };
     case LOGIN_USER_SUCCESS:
-    console.log("yyyyyyy");
       return { ...state, loading: false };
     case LOGIN_USER_FAIL:
-    console.log("xxxxxx");
     return { ...state, loading: false };
   default:
       return state;
