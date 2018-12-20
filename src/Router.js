@@ -23,8 +23,19 @@ const RouterComponent = () => {
         />
 
         <Scene key="loginScreen" component={LoginForm} title="Giris Ekrani" />
+<<<<<<< HEAD
           
+=======
+      
+        <Scene 
+        onRight={() => console.log('tıklandı')}
+        rightTitle="Yeni"       
+        key="studentsList" 
+        component={StudentsList} 
+        title="Öğrenci Liste" />
+>>>>>>> Navigation
       </Scene>
+      
     </Router>
   );
 };
