@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Picker} from 'react-native';
+import { connect } from 'react-redux';
 import { Button, Card, CardSection } from '../ortak';
+import { studentChange } from '../actions'
 
 class StudentCreate extends Component {
     
@@ -16,7 +18,7 @@ class StudentCreate extends Component {
                 placeholder = "İsim"
                 style = {inputStyle}
                 value={this.props.isim}
-                onChangeText={isim => this.props.studentChanged(isim)}
+                onChangeText={isim => this.props.studentChange( {props: 'isim', value: isim })}
            />              
             </CardSection>
 
@@ -25,7 +27,7 @@ class StudentCreate extends Component {
                 placeholder="soyisim"
                 style={inputStyle}
                 value={this.props.soyisim}
-                onChangeText = {soyisim => this.props.studentChanged(soyisim)}
+                onChangeText = {soyisim => this.props.studentChange({props: 'soyisim', value: soyisim })}
             />   
                         
             </CardSection>
@@ -35,20 +37,21 @@ class StudentCreate extends Component {
                 placeholder="Öğrenci numarası"
                 style={inputStyle}
                 value={this.props.ogrencinumara}
-                onChangeText = {ogrencinumara => this.props.studentChanged(ogrencinumara)}
+                onChangeText = {ogrencinumara => this.props.studentChange({props: 'ogrencinumara', value: ogrencinumara })}
             />               
             </CardSection>
 
             <CardSection>
+            <Text>Şube</Text>
                 <Picker
                 style={{ flex: 1 }}
                 selectedValue={this.props.sube}
-                onValueChange={sube => this.props.studentChanged(sube)}
+                onValueChange={sube => this.props.studentChange({ props: 'sube', value: sube })}
                 >
                 <Picker.Item label="A şubesi" value="asube" />
-                <Picker.Item label="B şubesi" value="asube" />
-                <Picker.Item label="C şubesi" value="asube" />
-                <Picker.Item label="D şubesi" value="asube" />
+                <Picker.Item label="B şubesi" value="bsube" />
+                <Picker.Item label="C şubesi" value="csube" />
+                <Picker.Item label="D şubesi" value="dsube" />
                 </Picker>
             </CardSection>
 
@@ -71,4 +74,16 @@ const styles = {
     },
   };
 
-export default StudentCreate;
+  const mapToStateProps = ({ studentsListRespone }) => {
+    const { isim,
+    soyisim,
+    ogrencinumara,
+     sube} = studentsListRespone;
+  
+    return { isim,
+    soyisim,
+    ogrencinumara,
+    sube };
+  };
+  
+  export default connect(mapToStateProps, { studentChange })(StudentCreate);

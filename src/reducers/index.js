@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import kimlikdogrulamaReducers from './KimlikdogrulamaReducers';
-import StudentsListReducer from './StudentsListReducer';
+import StudentsListReducers from './StudentsListReducers';
 
 export default combineReducers({
   kimlikdogrulamaResponse: kimlikdogrulamaReducers,
-  studentsListRespone: StudentsListReducer
-});
+  studentsListRespone: StudentsListReducers
+});   
