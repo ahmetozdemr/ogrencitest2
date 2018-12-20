@@ -88,4 +88,12 @@ const mapToStateProps = ({ studentsListRespone }) => {
   sube};
 };
 
+<<<<<<< HEAD
 export default connect(mapToStateProps, { studentChange })(StudentCreate);
+=======
+<<<<<<< HEAD
+export default StudentCreate;
+=======
+export default StudentCreate;
+>>>>>>> master
+>>>>>>> studentcreatepage
