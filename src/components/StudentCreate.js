@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput} from 'react-native';
+import { View, Text, TextInput, Picker} from 'react-native';
 import { Button, Card, CardSection } from '../ortak';
 
 class StudentCreate extends Component {
@@ -37,6 +37,19 @@ class StudentCreate extends Component {
                 value={this.props.ogrencinumara}
                 onChangeText = {ogrencinumara => this.props.studentChanged(ogrencinumara)}
             />               
+            </CardSection>
+
+            <CardSection>
+                <Picker
+                style={{ flex: 1 }}
+                selectedValue={this.props.sube}
+                onValueChange={sube => this.props.studentChanged(sube)}
+                >
+                <Picker.Item label="A şubesi" value="asube" />
+                <Picker.Item label="B şubesi" value="asube" />
+                <Picker.Item label="C şubesi" value="asube" />
+                <Picker.Item label="D şubesi" value="asube" />
+                </Picker>
             </CardSection>
 
             <CardSection>
