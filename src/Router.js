@@ -2,40 +2,29 @@ import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import StudentsList from './components/StudentsList';
-import StudentCreate from './components/StudentCreate';
+import studentCreate from './components/StudentCreate';
 
 const RouterComponent = () => {
   return (
     <Router>
-      <Scene key="main">
+      <Scene key="kimlik">
+
+      <Scene key="loginScreen" component={LoginForm} title="Giris Ekrani" />
 
       <Scene 
-        onRight={() => Actions.StudentCreate()}
+        onRight={() => Actions.studentCreate()}
         rightTitle="Yeni"
         key="studentsList" 
         component={StudentsList} 
         title="Öğrenci Liste" />
-        
+             
         <Scene
-        key="StudentCreate"
-        component={StudentCreate}
+        key="studentCreate"
+        component={studentCreate}
         title="Öğrenci Kaydet"
         />
-
-        <Scene key="loginScreen" component={LoginForm} title="Giris Ekrani" />
-<<<<<<< HEAD
-          
-=======
-      
-        <Scene 
-        onRight={() => console.log('tıklandı')}
-        rightTitle="Yeni"       
-        key="studentsList" 
-        component={StudentsList} 
-        title="Öğrenci Liste" />
->>>>>>> Navigation
+       
       </Scene>
-      
     </Router>
   );
 };
