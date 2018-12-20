@@ -58,4 +58,8 @@ const styles = {
     },
   };
 
+<<<<<<< HEAD
 export default StudentCreate;
+=======
+export default StudentCreate;
+>>>>>>> master
