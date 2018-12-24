@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 import { STUDEN_CHANGED,
   CREATE_REQUEST_SUCCESS,
   CREATE_REQUEST } from './types';
@@ -20,7 +21,8 @@ export const studentCreate = ({ isim, soyisim, ogrencinumara, sube }) => {
     firebase.database().ref(`/kullanicilar/${currentUser.uid}/ogrenciler`)
       .push({ isim, soyisim, ogrencinumara, sube })
         .then(() => {
-         dispatch({ type: CREATE_REQUEST_SUCCESS });      
+         dispatch({ type: CREATE_REQUEST_SUCCESS });    
+         Actions.pop();  
         });
     };
 };
