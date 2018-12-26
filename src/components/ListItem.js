@@ -5,22 +5,24 @@ import { CardSection } from '../ortak';
 
 class ListItem extends Component {
 
-    ogrenciClick() {
-        Actions.studentCreate({ student: this.props.ogrenci });
-    }
-    render() {
-        const { isim, soyisim } = this.props.ogrenci;
-        return (
-            <TouchableWithoutFeedback onpress={this.ogrenciClick.bind(this)}>
-            <View>
-                <CardSection>
-                <Text>
-                  {isim} {soyisim}
-                </Text>
-                </CardSection>
-            </View>
-            </TouchableWithoutFeedback>
-        );
-    }
+  ogrenciClick() {
+    Actions.studentUpdate({ student: this.props.ogrenci });
+  }
+
+  render() {
+    const { isim, soyisim } = this.props.ogrenci;
+    return (
+      <TouchableWithoutFeedback onPress={this.ogrenciClick.bind(this)}>
+      <View>
+        <CardSection>
+          <Text>
+            {isim} {soyisim}
+          </Text>
+        </CardSection>
+      </View>
+      </TouchableWithoutFeedback>
+    );
+  }
 }
+
 export default ListItem;
