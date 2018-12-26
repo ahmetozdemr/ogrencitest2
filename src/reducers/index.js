@@ -6,5 +6,5 @@ import StudentDataReducers from './StudentDataReducers';
 export default combineReducers({
   kimlikdogrulamaResponse: kimlikdogrulamaReducers,
   studentsListRespone: StudentsListReducers,
-  studentsDataResponse: StudentDataReducers
+  studentDataResponse: StudentDataReducers
 });   
