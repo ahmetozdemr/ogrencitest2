@@ -6,25 +6,36 @@ import { studentChange, studentCreate } from '../actions';
 
 class StudentUpdate extends Component {
 state = { isim: '', soyisim: '', ogrencinumara: '', sube: '' };
+componentWillMount() {
+    const { isim,
+        soyisim,
+        ogrencinumara,
+        sube } = this.props.student;
+
+        this.setState({ isim,
+            soyisim,
+            ogrencinumara,
+            sube });
+      }
  clickUpdate() {
     const { isim,
     soyisim,
     ogrencinumara,
     sube } = this.state;
 
-    this.props.studentCreate({ isim, soyisim, ogrencinumara, sube });
+    this.props.studentCreate({ isim, soyisim, ogrencinumara, sube, uid: this.props.studen.uid });
   }
   clickDelete(){
 
   }
   renderButton() {
-    if (!this.props.loading) {
+    if (!this.props.loadingUpdate) {
       return <Button onPress={this.clickUpdate.bind(this)}> Guncelle </Button>;
     }
     return <Spinner size="small" />;
   }
   renderDeleteButton() {
-    if (!this.props.loading) {
+    if (!this.props.loadingDelete) {
       return <Button onPress={this.clickDelete.bind(this)}> Sil </Button>;
     }
     return <Spinner size="small" />;
@@ -101,8 +112,8 @@ const styles = {
 
 };
 
-const mapToStateProps = ({ studentsListRespone }) => {
-  const { loading } = studentsListRespone;
+const mapToStateProps = ({ studentUpdateRespone }) => {
+  const { loadingUpdate } = studentUpdateRespone;
 
   return { loading };
 };
