@@ -8,7 +8,7 @@ import StudentUpdate from './components/StudentUpdate';
 const RouterComponent = () => {
   return (
     <Router>
-      <Scene key="kimlik"> 
+      <Scene key="kimlik">  
 
       <Scene key="loginScreen" component={LoginForm} title="Giris Ekrani" />
 
