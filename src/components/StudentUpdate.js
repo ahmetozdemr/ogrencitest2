@@ -2,31 +2,31 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, Picker } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Card, CardSection, Spinner } from '../ortak';
-import { studentChange, studentCreate } from '../actions';
+import { studentChange, studentUpdate, studentDelete } from '../actions';
 
 class StudentUpdate extends Component {
-state = { isim: '', soyisim: '', ogrencinumara: '', sube: '' };
-componentWillMount() {
-    const { isim,
-        soyisim,
-        ogrencinumara,
-        sube } = this.props.student;
+ state = { isim: '', soyisim: '', ogrencinumara: '', sube: '' };
+ componentWillMount() {
+   const { isim,
+   soyisim,
+   ogrencinumara,
+   sube } = this.props.student;
 
-        this.setState({ isim,
-            soyisim,
-            ogrencinumara,
-            sube });
-      }
- clickUpdate() {
+   this.setState({ isim,
+   soyisim,
+   ogrencinumara,
+   sube });
+ }
+  clickUpdate() {
     const { isim,
     soyisim,
     ogrencinumara,
     sube } = this.state;
 
-    this.props.studentCreate({ isim, soyisim, ogrencinumara, sube, uid: this.props.studen.uid });
+    this.props.studentUpdate({ isim, soyisim, ogrencinumara, sube, uid: this.props.student.uid });
   }
-  clickDelete(){
-
+  clickDelete() {
+    this.props.studentDelete({ uid: this.props.student.uid });
   }
   renderButton() {
     if (!this.props.loadingUpdate) {
@@ -34,6 +34,7 @@ componentWillMount() {
     }
     return <Spinner size="small" />;
   }
+
   renderDeleteButton() {
     if (!this.props.loadingDelete) {
       return <Button onPress={this.clickDelete.bind(this)}> Sil </Button>;
@@ -94,7 +95,6 @@ componentWillMount() {
       <CardSection>
        {this.renderDeleteButton()}
       </CardSection>
-
       </Card>
     );
   }
@@ -112,10 +112,12 @@ const styles = {
 
 };
 
-const mapToStateProps = ({ studentUpdateRespone }) => {
-  const { loadingUpdate } = studentUpdateRespone;
+const mapToStateProps = ({ studenUpdateResponse }) => {
+  const { loadingUpdate, loadingDelete } = studenUpdateResponse;
 
-  return { loading };
+  return {
+  loadingUpdate,
+loadingDelete };
 };
 
-export default connect(mapToStateProps, { studentChange, studentCreate })(StudentUpdate);
+export default connect(mapToStateProps, { studentChange, studentUpdate, studentDelete })(StudentUpdate);

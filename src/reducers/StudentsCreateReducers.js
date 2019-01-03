@@ -15,9 +15,8 @@ export default (state = INITIAL_STATE, action) => {
     case CREATE_REQUEST:
       return { ...state, loading: true };
     case CREATE_REQUEST_SUCCESS:
-      return INITIAL_STATE;
+    return INITIAL_STATE;  
     default:
-    return state;
-
-  }
+      return state;
+    }
 };
