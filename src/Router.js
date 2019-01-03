@@ -3,12 +3,12 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import StudentsList from './components/StudentsList';
 import studentCreate from './components/StudentCreate';
-import StudentUpdate from './components/StudentUpdate';
+import studentUpdate from './components/StudentUpdate';
 
 const RouterComponent = () => {
   return (
     <Router>
-      <Scene key="kimlik">  
+      <Scene key="kimlik">
 
       <Scene key="loginScreen" component={LoginForm} title="Giris Ekrani" />
 
@@ -17,18 +17,18 @@ const RouterComponent = () => {
         rightTitle="Yeni"
         key="studentsList" 
         component={StudentsList} 
-        title="Öğrenci Liste" />
+        title="Öğrenci Liste"       
+        />
              
         <Scene
         key="studentCreate"
         component={studentCreate}
-        title="Öğrenci Kaydet"
+        title="Öğrenci Kaydet"       
         />
-
         <Scene
-        key="StudentUpdate"
-        component={StudentUpdate}
-        title="Öğrenci Kaydet"
+        key="studentUpdate"
+        component={studentUpdate}
+        title="Öğrenci Güncelle"       
         />
        
       </Scene>
